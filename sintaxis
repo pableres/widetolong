@@ -1,0 +1,13 @@
+df <- read_excel("C:/Users/pable/Desktop/DB30042020.xlsx")
+View(df)
+
+df$p<-as.factor(df$p)
+
+#metodo 1 library(tidyr)
+data_long <- gather(df, caracteristica, valor, E1:E48, factor_key=TRUE)
+data_long<-data_long[order(data_long$p),]
+View(data_long)
+
+#metodo 2 library(reshape2)
+longdf<-melt(df, id.vars = "p")
+View(longdf)
